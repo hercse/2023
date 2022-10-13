@@ -1,0 +1,48 @@
+.local {
+  &- {
+    &hero {
+      width: 100%;
+      height: 80vh;
+      background-color: goldenrod;
+      overflow-x: hidden;
+      padding: 2vmin 0;
+      //   &:hover {
+      //     .local-hero-roll {
+      //       animation-duration: 10s;
+      //     }
+      //   }
+      &-roll {
+        @keyframes hero-roll {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(calc((((-60vmin * 4) + (-4vmin * 4)) / 2)));
+          }
+        }
+        animation: hero-roll 6s infinite alternate ease-in-out;
+        height: 100%;
+        display: flex;
+      }
+      img {
+        z-index: 1000;
+        &:hover {
+          width: 80vmin;
+          //   transform: scale(2);
+        }
+        transition: width 2s cubic-bezier(0.87, 0, 0.09, 1);
+        margin: 0 2vmin;
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+        width: 60vmin;
+        display: block;
+      }
+    }
+  }
+}
+:root {
+  --half-color-primary: #235ba8;
+  --row-gap: 4vmin;
+  --column-gap: 4vmin;
+}
