@@ -1,0 +1,120 @@
+@font-face {
+  font-family: "Cubic";
+  src: url("Cubic_11_1.013_R.woff2");
+}
+:root {
+  --half-color-primary: #235ba8;
+  --row-gap: 4vmin;
+  --column-gap: 4vmin;
+  // accent-color: rgb(0, 0, 0);
+}
+body * {
+  font-family: lores-9-plus-wide, Cubic, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-size: 20px;
+}
+form {
+  h6 {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+  }
+  & > div > * {
+    margin: 1vmin 0;
+    width: 100%;
+    min-height: 5vmin;
+    border-radius: 10px;
+    border: black solid 1.5px;
+    padding: 10px;
+    font-size: 2vmin;
+    mix-blend-mode: difference;
+    background-color: white;
+    color: black;
+  }
+  select {
+    // background-color: black;
+    // color: white;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+.sticker {
+  position: absolute;
+}
+.conanct {
+  position: relative;
+  padding: 10vh 0;
+}
+.about {
+  padding: 10vh 0;
+  position: relative;
+  h5 {
+    margin: 10vh 0;
+  }
+}
+.works {
+  position: relative;
+  // min-height: 100vh;
+  padding: 10vh 0;
+  &-items {
+    --row-gap: 2vmin;
+    --column-gap: 2vmin;
+  }
+  &-item {
+    background-color: black;
+    height: 50vmin;
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+.cover {
+  height: 100vh;
+  filter: invert(1);
+  background-color: white;
+  color: black;
+  overflow-x: hidden;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  .logo {
+    text-align: center;
+    font-size: 40vmin;
+  }
+  .intro {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  .quee {
+    font-size: 20vmin;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    &:first-child .words {
+      animation: quee-words 5s infinite steps(50) reverse;
+    }
+    .words {
+      letter-spacing: 100px;
+      animation: quee-words 5s infinite steps(50);
+      @keyframes quee-words {
+        0% {
+          transform: translateX(-20%);
+        }
+        100% {
+          transform: translateX(-120%);
+        }
+      }
+    }
+  }
+}
