@@ -2,8 +2,14 @@
   font-family: "Cubic";
   src: url("Cubic_11_1.013_R.woff2");
 }
+// fixed
+// [half-newspaper] > *,
+// [half-risopaper] > * {
+//   filter: saturate(0%) contrast(120%) brightness(1);
+// }
+// fixed end
 :root {
-  --half-color-primary: #235ba8;
+  --half-color-primary: #bb8b41;
   --row-gap: 4vmin;
   --column-gap: 4vmin;
   // accent-color: rgb(0, 0, 0);
@@ -44,6 +50,7 @@ form {
 }
 .sticker {
   position: absolute;
+  pointer-events: none;
 }
 .conanct {
   position: relative;
@@ -56,11 +63,89 @@ form {
     margin: 10vh 0;
   }
 }
+.footer {
+  color: #000;
+  background-color: #fff;
+  filter: invert(1);
+  min-height: 100vmin;
+  padding: 5vmin;
+  padding-bottom: 15vmin;
+  & div {
+    // height: 100%;
+    row-gap: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+  }
+}
+.nav {
+  position: sticky;
+  left: 0;
+  top: 0;
+  border-bottom: 1px solid #fff;
+  padding: 20px 25px;
+  width: 100%;
+  color: #fff;
+  z-index: 10000 !important;
+  background-color: #000;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
 .works {
   position: relative;
   // min-height: 100vh;
   padding: 10vh 0;
+  &-amination {
+    height: 100vh;
+    position: relative;
+  }
+  &.viewing {
+    .works {
+      &-writed {
+        transition: transform 1.8s cubic-bezier(0.86, 0, 0.09, 1), opacity 1s 1s;
+        transform: translateX(0%);
+        opacity: 1;
+        pointer-events: all;
+      }
+      &-items {
+        transition: 1.5s cubic-bezier(0.86, 0, 0.09, 1);
+        transform: translateX(-120%);
+        // opacity: 0;
+      }
+    }
+  }
+  &-writed {
+    transition: transform 1.5s cubic-bezier(0.86, 0, 0.09, 1), opacity 1s,
+      pointer-events 5s 2s;
+    transform: translateX(120%);
+    // opacity: 0;
+    padding: 5vmin;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+    img {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+      object-position: center;
+    }
+    .text {
+      height: 60vh;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-around;
+    }
+  }
   &-items {
+    transition: transform 1.5s 0.4s cubic-bezier(0.86, 0, 0.09, 1),
+      opacity 1s 1s;
+    top: 0;
+    left: 0;
+    position: absolute;
     --row-gap: 2vmin;
     --column-gap: 2vmin;
   }
@@ -69,6 +154,15 @@ form {
     height: 50vmin;
     border-radius: 10px;
     overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0, 1.02);
+    &:hover {
+      transform: scale(0.95);
+    }
+    &:active {
+      transition: 0.3s;
+      transform: scale(1.2);
+      z-index: 1000;
+    }
     img {
       width: 100%;
       height: 100%;
@@ -78,7 +172,7 @@ form {
   }
 }
 .cover {
-  height: 100vh;
+  height: calc(100vh + 2px);
   filter: invert(1);
   background-color: white;
   color: black;
@@ -86,6 +180,7 @@ form {
   display: flex;
   flex-flow: column;
   justify-content: center;
+  border-bottom: 1px solid #000;
   .logo {
     text-align: center;
     font-size: 40vmin;
@@ -95,25 +190,27 @@ form {
     text-transform: uppercase;
     font-size: 20px;
   }
-  .quee {
-    font-size: 20vmin;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    &:first-child .words {
-      animation: quee-words 5s infinite steps(50) reverse;
-    }
-    .words {
-      letter-spacing: 100px;
-      animation: quee-words 5s infinite steps(50);
-      @keyframes quee-words {
-        0% {
-          transform: translateX(-20%);
-        }
-        100% {
-          transform: translateX(-120%);
-        }
+}
+.quee {
+  font-size: 20vmin;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start !important;
+  flex-flow: row !important;
+  align-items: center;
+  &:first-child .words {
+    animation: quee-words 5s infinite steps(50) reverse;
+  }
+  .words {
+    letter-spacing: 100px;
+    animation: quee-words 5s infinite steps(50);
+    @keyframes quee-words {
+      0% {
+        transform: translateX(-20%);
+      }
+      100% {
+        transform: translateX(-120%);
       }
     }
   }
